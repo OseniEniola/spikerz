@@ -30,7 +30,8 @@
                 "glob": "**/*",
                 "input": "public"
               },
-              "src/assets"
+              "src/assets",
+              "src/netlify"
             ],
             "styles": [
               "src/assets/styles/styles.scss"
