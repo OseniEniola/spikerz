@@ -70,11 +70,11 @@ export class AssetFlowComponent {
     },
   ];
 
-  public doughnutChartLabels: string[] = ['Critical', 'High', 'Medium', 'Low'];
+  public doughnutChartLabels: string[] = ['30 Critical', '45 High', '10 Medium', ' 30 Low'];
   public doughnutChartDatasets: ChartConfiguration<'doughnut'>['data']['datasets'] =
     [
       {
-        data: [350, 450, 100, 30],
+        data: [30, 45, 10, 30],
         backgroundColor: ['#E5372B', '#C6190D', '#FF9500', '#02983E'],
       },
     ];
