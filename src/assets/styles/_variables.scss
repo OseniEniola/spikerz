@@ -1,0 +1,46 @@
+
+
+
+
+// NOTE Body ------------------------------------------------------------------------------------
+//Responsive Breakpoints
+$xs: 375px;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
+$xxxl: 1600px;
+
+
+:root{
+    --white: #ffffff;
+    --dark-green: #00732E;
+    --light-green: #02983E;
+    --light-green-shade:#E9FAF0;
+    --gray-soft: #525D73;
+    --gray-light: #404A60;
+    --gray-light-2:#667085;
+    --gray-soft-2: #858D9D;
+    --deep-gray: #334155;
+    --deep-gray-2: #030229;
+    --purple: #7A44FF;
+
+
+    --high:#E5372B;
+    --critical: #C6190D;
+    --medium: #FF9500;
+    --low: #02983E;
+
+    --high-rgb:229, 55, 43;
+    --critical-rgb: 198, 25, 13;
+    --medium-rgb: 255, 149, 0;
+    --low-rgb: 2, 152, 62;
+
+    --gray-soft-3: #E0E2E7;
+
+    --shadow-sm:#0000000F;
+
+    --bg-blue-light: #D7EAFF;
+    --bkg-gray-soft: #FAFAFA;
+}

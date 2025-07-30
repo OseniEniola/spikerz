@@ -1,0 +1,75 @@
+<div class="content-wrap">
+  <!-- Heading: Description -->
+  <h2 id="description-heading" class="heading text-green text-700">Lorem Lorem Lorem</h2>
+
+
+  <section class="workflow-wrap">
+
+   <div class="workflow">
+     <app-workflow></app-workflow>
+   </div>
+
+    <div class="legend-wrap">
+      <div class="separator"></div>
+      <div class="legends">
+        <div class="legend critical">
+          <div class="icon-wrap "><app-lazy-media [src]="'/assets/imgs/icons/shield-x.svg'"
+              [alt]="'shield'"></app-lazy-media></div>
+          <span>Critical</span>
+        </div>
+
+        <div class="legend medium">
+          <div class="icon-wrap "><app-lazy-media [src]="'/assets/imgs/icons/shield-x.svg'"
+              [alt]="'shield'"></app-lazy-media></div>
+          <span>Medium</span>
+        </div>
+
+        <div class="legend low">
+          <div class="icon-wrap "><app-lazy-media [src]="'/assets/imgs/icons/shield.svg'"
+              [alt]="'shield'"></app-lazy-media></div>
+          <span>Low</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Heading: Description -->
+  <h2 id="description-heading" class="heading text-green text-700">Lorem IpsumDolor Sit</h2>
+  <section class="risk-assessment-sec">
+    <div class="contextual-risk-card">
+      <div class="header">
+        <span>Asset</span>
+        <span>Contextual Risk</span>
+      </div>
+      <div class="asset-list">
+        <div *ngFor="let item of paginatedItems" class="asset">
+          <div class="server-details">
+            <div class="server-icon">
+              <img src="/assets/imgs/icons/server.svg" alt="Server icon for {{ item.serverName }}" />
+            </div>
+            <div class="server-name">
+              <h2>{{ item.serverName }}</h2>
+              <h5>{{ item.ip }}</h5>
+            </div>
+          </div>
+          <div [ngClass]="item.status" class="status">
+            {{item.status}}
+          </div>
+        </div>
+      </div>
+      <div class="pagination-controls">
+        <button (click)="previousPage()" [disabled]="currentPage === 0"> < </button>
+            <span>Showing {{ startItem + 1 }}–{{ endItem }} of {{ assestList.length }}</span>
+            <button (click)="nextPage()" [disabled]="currentPage >= totalPages - 1">></button>
+      </div>
+    </div>
+    
+    <div class="chart-wrap">
+      <div class="header"><span>Contextual Risk</span></div>
+      <canvas baseChart [labels]="doughnutChartLabels" [datasets]="doughnutChartDatasets" [options]="doughnutChartOptions"
+      [legend]="true" [type]="'doughnut'">
+    </canvas>
+    </div>
+
+  </section>
+</div>

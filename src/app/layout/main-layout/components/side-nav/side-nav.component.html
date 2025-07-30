@@ -1,0 +1,63 @@
+<div class="content-wrap" [ngClass]="{ collapsed: isCollapsed, mobileMenuisOpened:openMobileMenu }">
+ 
+  <div class="toggle" [ngClass]="{ collapsed: isCollapsed, mobileMenuisOpened:openMobileMenu }" (click)="toggleMenu()" role="button" tabindex="0"
+    aria-label="Toggle navigation menu">
+    <img src="./assets/imgs/icons/back-arrow.svg" alt="toggle" />
+  </div>
+
+     <!-- Navigation Menu -->
+  <nav class="menu-wrap" role="navigation" [ngClass]="{ collapsed: isCollapsed,mobileMenuisOpened:openMobileMenu }" aria-label="Main menu">
+    <ul>
+      <li class="menu-item" *ngFor="let menu of menuItems; let i = index" [ngClass]="{ 'active': activeMenu == i }"
+        (click)="activeMenu = i" tabindex="0" role="button" [attr.aria-pressed]="activeMenu === i"
+        [attr.aria-label]="menu">
+        <div>
+          <app-lazy-media [isBackground]="false" [lazyLoad]="true" [src]="'assets/imgs/icons/menu-' + (i + 1) + '.svg'"
+            [alt]="menu"></app-lazy-media>
+        </div>
+        <span *ngIf="!isCollapsed" class="menu-label" [@fadeInOut]>{{ menu }}</span>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Bottom Section -->
+  <div class="btm-sec">
+    <div class="menu" role="button" tabindex="0" aria-label="More options">
+      <div>
+        <app-lazy-media [isBackground]="false" [lazyLoad]="true" [src]="'assets/imgs/icons/menu-8.svg'"
+          [alt]="'More'"></app-lazy-media>
+      </div>
+      <span *ngIf="!isCollapsed" class="menu-label" [@fadeInOut]>Lorem</span>
+    </div>
+
+    <div class="menu" role="button" tabindex="0" aria-label="Help center">
+      <div>
+        <app-lazy-media [isBackground]="false" [lazyLoad]="true" [src]="'assets/imgs/icons/menu-9.svg'"
+          [alt]="'Help'"></app-lazy-media>
+      </div>
+      <span *ngIf="!isCollapsed" class="menu-label" [@fadeInOut]>Lorem</span>
+    </div>
+
+    <!-- Profile/Logout Area -->
+    <div class="avatar-wrap" role="region" aria-label="User profile section">
+      <div *ngIf="!isCollapsed" class="menu-label" [@fadeInOut] class="info">
+        <div class="icon">
+          <app-lazy-media [isBackground]="false" [lazyLoad]="true" [src]="'assets/imgs/icons/avatar.svg'"
+            [alt]="'User avatar'"></app-lazy-media>
+        </div>
+        <div>
+          <p aria-label="User name">Lorem</p>
+          <p aria-label="User role">Lorem</p>
+        </div>
+      </div>
+
+      <div role="button" tabindex="0" aria-label="Logout">
+        <app-lazy-media [isBackground]="false" [lazyLoad]="true" [src]="'assets/imgs/icons/logout.svg'"
+          [alt]="'Logout icon'"></app-lazy-media>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+ 

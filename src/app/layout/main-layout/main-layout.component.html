@@ -1,0 +1,14 @@
+<div class="page-wrap" role="main">
+
+  <img [ngClass]="{ collapsed: openMobileMenu }" (click)="toggleMenu()" class="mobile-drawer" src="./assets/imgs/icons/menu-1.svg" alt="toggle" />
+
+  <!-- Sidebar Navigation -->
+  <aside [ngClass]="{ mobileMenuisOpened: openMobileMenu }"  class="side-nav" role="complementary" aria-label="Sidebar navigation">
+    <app-side-nav (updateMobileToggle)="updateToggle($event)" ></app-side-nav>
+  </aside>
+
+  <!-- Main Content Area -->
+  <div class="content-wrap" role="region" aria-label="Main content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

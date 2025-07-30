@@ -1,0 +1,52 @@
+<div *ngIf="accordionItems.length > 0">
+  <accordion [isAnimated]="true" [closeOthers]="true">
+    <accordion-group
+      *ngFor="let item of accordionItems; let i = index"
+      [attr.aria-labelledby]="'accordion-header-' + i"
+      [attr.id]="'accordion-panel-' + i"
+      role="region"
+    >
+      <div
+        accordion-heading
+        class="accordion-head"
+        tabindex="0"
+        role="button"
+        [attr.id]="'accordion-header-' + i"
+        [attr.aria-controls]="'accordion-panel-' + i"
+        aria-expanded="false"
+      >
+        <div class="name">{{ item.name }}</div>
+
+        <div class="info-wrap">
+          <div class="server-details">
+            <div class="server-icon">
+              <img
+                src="/assets/imgs/icons/server.svg"
+                alt="Server icon for {{ item.serverName }}"
+              />
+            </div>
+            <div class="server-name">
+              <h2>{{ item.serverName }}</h2>
+              <h5>{{ item.serverName }}</h5>
+            </div>
+          </div>
+
+          <div class="vr-separator" aria-hidden="true"></div>
+
+          <div class="desc">
+            <p>{{ item.desc }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="accordion-content"
+        [attr.id]="'accordion-panel-' + i"
+        role="region"
+        [attr.aria-labelledby]="'accordion-header-' + i"
+      >
+        {{ item.content }}
+      </div>
+    </accordion-group>
+  </accordion>
+</div>

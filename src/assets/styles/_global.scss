@@ -1,0 +1,86 @@
+
+*{
+    font-family: 'Public Sans';
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+}
+
+
+.text-green{
+    color: var(--light-green)
+}
+
+.text-gray-soft{
+    color: var(--gray-soft);
+}
+
+.text-700{
+    font-weight: 700;
+}
+
+hr{
+    color: var(--gray-soft-3);
+}
+
+  .separator {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    height: 1px;
+    border-color: var(--gray-soft-3);
+    background-color: var(--gray-soft-3);
+  }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+/* Firefox (uncomment to work in Firefox, although other properties will not work!)  */
+/** {
+  scrollbar-width: thin;
+  scrollbar-color: #397524 #DFE9EB;
+}*/
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: #DFE9EB;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #B8C0C2;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #B8C0C2;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #397524;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #62A34B;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: #62A34B;
+}

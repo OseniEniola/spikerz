@@ -1,0 +1,13 @@
+<ng-container *ngIf="isVisible">
+  <img *ngIf="!isBackground" [src]="src" [alt]="alt" [class]="className" loading="lazy" decoding="async" />
+
+  <div *ngIf="isBackground" [ngStyle]="{ 'background-image': 'url(' + src + ')' }" [class]="className" role="img"
+    [attr.aria-label]="alt"> <ng-content></ng-content></div>
+    <div>
+      
+    </div>
+</ng-container>
+
+<ng-container *ngIf="!isVisible && placeholder">
+  <img [src]="placeholder" [alt]="'placeholder'" [class]="className" />
+</ng-container>

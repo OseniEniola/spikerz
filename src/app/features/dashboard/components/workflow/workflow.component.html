@@ -1,0 +1,89 @@
+<ngx-graph class="chart-container" [view]="isMobile ? [ 300,250]:[700, 250]" [links]="links" [nodes]="nodes" layout="dagreCluster">
+    <ng-template #defsTemplate>
+        <svg:marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="4" markerHeight="4" orient="auto">
+            <svg:path d="M0,-5L10,0L0,5" class="arrow-head" />
+        </svg:marker>
+    </ng-template>
+
+    <ng-template #clusterTemplate let-cluster>
+        <svg:g class="node cluster">
+            <svg:rect rx="5" ry="5" [attr.width]="cluster.dimension.width" [attr.height]="cluster.dimension.height"
+                [attr.fill]="cluster.data.color" />
+        </svg:g>
+    </ng-template>
+
+    <ng-template #nodeTemplate let-node>
+        <foreignObject width="70" height="70" requiredExtensions="http://www.w3.org/1999/xhtml">
+            <div (mouseenter)="onNodeMouseEnter($event, node)" (mouseleave)="onNodeMouseLeave()" class="server-details">
+                <div class="server-icon">
+                    <ng-container *ngIf="node?.isFirst; else serverIcon">
+                        <img src="./assets/imgs/icons/venetian-mask.svg" alt="Start icon for {{node.label}}" />
+                        <div class="badge start">
+                            <img src="./assets/imgs/icons/group.svg" alt="Start icon for {{node.label}}" />
+
+                        </div>
+                    </ng-container>
+
+                    <ng-template #serverIcon>
+                        <img src="/assets/imgs/icons/server.svg" alt="Server icon for {{node.label}}" />
+                        <div *ngIf="node?.isCritical" class="badge critical">
+                            <img src="./assets/imgs/icons/shield-x.svg" alt="Start icon for {{node.label}}" />
+
+                        </div>
+                    </ng-template>
+                </div>
+                <span class="label-name">{{node.label}}</span>
+            </div>
+
+
+        </foreignObject>
+    </ng-template>
+
+    <ng-template #linkTemplate let-link>
+        <svg:g class="edge">
+            <svg:path class="line" stroke-width="2" marker-end="url(#arrow)"></svg:path>
+            <svg:text class="edge-label" text-anchor="middle">
+                <textPath class="text-path" [attr.href]="'#' + link.id"
+                    [style.dominant-baseline]="link.dominantBaseline" startOffset="50%">
+                    <!--    {{link.label}} -->
+                </textPath>
+            </svg:text>
+        </svg:g>
+    </ng-template>
+</ngx-graph>
+
+<ng-container #tooltip>
+    <div *ngIf="hoveredNode" class="tooltip-wrap" [ngStyle]="{
+    left: mouseX + 10 + 'px',
+    top: mouseY + 10 + 'px'
+  }">
+        <div class="server-details flex-d">
+            <div class="server-icon">
+                <ng-container>
+                    <img src="/assets/imgs/icons/server.svg" alt="Server icon for {{hoveredNode.label}}" />
+                    <div *ngIf="hoveredNode?.isCritical" class="badge critical">
+                        <img src="./assets/imgs/icons/shield-x.svg" alt="Start icon for {{hoveredNode.label}}" />
+
+                    </div>
+                </ng-container>
+
+            </div>
+            <div class="name">
+                <div class="label-name">{{hoveredNode.label}}</div>
+                <div class="label-ip">{{hoveredNode.ip}}</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <img src="./assets/imgs/icons/file.svg" alt="Start icon for {{hoveredNode.label}}" />
+
+            <span *ngFor="let content of hoveredNode.content" [ngClass]="{ 'empasized': content.type === 'label' }"
+                [ngStyle]="{color:content.color,
+            'background-color': content.type === 'highlight'
+        ? namedColorsToRGBA[content.color] || 'transparent'
+        : 'transparent'}">
+                {{ content.text }}
+            </span>
+        </div>
+    </div>
+</ng-container>
