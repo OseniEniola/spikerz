@@ -32,7 +32,7 @@
               },
               "src/assets",
               "src/netlify",
-              "_redirects"
+              "src/_redirects"
             ],
             "styles": [
               "src/assets/styles/styles.scss"
