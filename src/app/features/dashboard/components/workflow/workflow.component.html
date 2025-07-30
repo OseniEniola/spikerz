@@ -1,4 +1,5 @@
-<ngx-graph class="chart-container" [view]="isMobile ? [ 300,250]:[700, 250]" [links]="links" [nodes]="nodes" layout="dagreCluster">
+<ngx-graph class="chart-container" [panOnZoom]="true" [autoCenter]="true" [autoZoom]="true"
+    [view]="isMobile ? [ 300,250]:[700, 250]" [links]="links" [nodes]="nodes" layout="dagreCluster">
     <ng-template #defsTemplate>
         <svg:marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="4" markerHeight="4" orient="auto">
             <svg:path d="M0,-5L10,0L0,5" class="arrow-head" />
@@ -13,7 +14,8 @@
     </ng-template>
 
     <ng-template #nodeTemplate let-node>
-        <foreignObject width="70" height="70" requiredExtensions="http://www.w3.org/1999/xhtml">
+        <foreignObject [attr.width]="isMobile ? '30': '70'" [attr.height]="isMobile ? '30': '70'"
+            requiredExtensions="http://www.w3.org/1999/xhtml">
             <div (mouseenter)="onNodeMouseEnter($event, node)" (mouseleave)="onNodeMouseLeave()" class="server-details">
                 <div class="server-icon">
                     <ng-container *ngIf="node?.isFirst; else serverIcon">
