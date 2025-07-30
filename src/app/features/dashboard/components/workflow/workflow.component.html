@@ -78,7 +78,7 @@
             <img src="./assets/imgs/icons/file.svg" alt="Start icon for {{hoveredNode.label}}" />
 
             <span *ngFor="let content of hoveredNode.content" [ngClass]="{ 'empasized': content.type === 'label' }"
-                [ngStyle]="{color:content.color,
+                [ngStyle]="{color:namedColorsToRGB[content.color] ,
             'background-color': content.type === 'highlight'
         ? namedColorsToRGBA[content.color] || 'transparent'
         : 'transparent'}">

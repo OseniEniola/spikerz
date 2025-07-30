@@ -104,7 +104,7 @@ export class WorkflowComponent {
       isFirst: true,
       content: [
         { type: 'label', text: 'Lorem: ', color: 'gray' },
-        { type: 'label', text: 'Lorem “Ipsum"', color: 'yellow' },
+        { type: 'highlight', text: 'Lorem “Ipsum"', color: 'yellow' },
         { type: 'label', text: 'Loremipsum', color: 'gray' },
         { type: 'highlight', text: 'Lorem 1234,5678', color: 'blue' },
       ],
@@ -116,7 +116,7 @@ export class WorkflowComponent {
       isCritical: true,
       content: [
         { type: 'label', text: 'Lorem: ', color: 'gray' },
-        { type: 'label', text: 'Lorem “Ipsum"', color: 'yellow' },
+        { type: 'highlight', text: 'Lorem “Ipsum"', color: 'yellow' },
         { type: 'label', text: 'Loremipsum', color: 'gray' },
         { type: 'highlight', text: 'Lorem 1234,5678', color: 'blue' },
       ],
@@ -141,7 +141,7 @@ export class WorkflowComponent {
       ip: '10.0.0.4',
       content: [
         { type: 'label', text: 'Lorem: ', color: 'gray' },
-        { type: 'label', text: 'Lorem “Ipsum"', color: 'yellow' },
+        { type: 'highlight', text: 'Lorem “Ipsum"', color: 'yellow' },
         { type: 'highlight', text: 'Lorem', color: 'green' },
         { type: 'label', text: 'Loremipsum Loremipsum', color: 'gray' },
         { type: 'highlight', text: '1.2.3.4', color: 'purple' },
@@ -150,7 +150,7 @@ export class WorkflowComponent {
         { type: 'highlight', text: '1.2.3.4', color: 'purple' },
 
         { type: 'label', text: 'Lorem: ', color: 'gray' },
-        { type: 'label', text: 'Lorem “Ipsum"', color: 'yellow' },
+        { type: 'highlight', text: 'Lorem “Ipsum"', color: 'yellow' },
         { type: 'label', text: 'Loremipsum Loremipsum', color: 'gray' },
         { type: 'highlight', text: '1.2.3.4', color: 'purple' },
         { type: 'highlight', text: '1.2.3.4', color: 'purple' },
@@ -161,7 +161,8 @@ export class WorkflowComponent {
       label: 'Auth Service',
       ip: '10.0.1.1',
       content: [
-        { type: 'label', text: 'Login: “Enabled”', color: 'red' },
+        { type: 'label', text: 'Lorem: ', color: 'gray' },
+        { type: 'highlight', text: 'Login: “Enabled”', color: 'red' },
         { type: 'highlight', text: 'Token', color: 'green' },
         { type: 'highlight', text: '5678', color: 'blue' },
       ],
@@ -171,7 +172,8 @@ export class WorkflowComponent {
       label: 'Message Queue',
       ip: '10.0.2.2',
       content: [
-        { type: 'label', text: 'Queue: “Active”', color: 'red' },
+        { type: 'label', text: 'Lorem: ', color: 'gray' },
+        { type: 'highlight', text: 'Queue: “Active”', color: 'red' },
         { type: 'highlight', text: '1.2.3.4', color: 'purple' },
       ],
     },
@@ -180,6 +182,7 @@ export class WorkflowComponent {
       label: 'Web Server 02',
       ip: '192.168.1.11',
       content: [
+        { type: 'label', text: 'Lorem: ', color: 'gray' },
         { type: 'highlight', text: '1.2.3.4', color: 'purple' },
         { type: 'highlight', text: '1234,5678', color: 'blue' },
       ],
@@ -198,7 +201,9 @@ export class WorkflowComponent {
       label: 'CDN Node',
       ip: '172.16.0.1',
       content: [
-        { type: 'label', text: 'Region: “US-West”', color: 'red' },
+        { type: 'label', text: 'Lorem: ', color: 'gray' },
+
+        { type: 'highlight', text: 'Region: “US-West”', color: 'red' },
         { type: 'highlight', text: 'Cache', color: 'green' },
       ],
     },
@@ -207,6 +212,8 @@ export class WorkflowComponent {
       label: 'Log Aggregator',
       ip: '172.16.0.2',
       content: [
+        { type: 'label', text: 'Lorem: ', color: 'gray' },
+
         { type: 'highlight', text: '1.2.3.4', color: 'purple' },
         { type: 'highlight', text: '1.2.3.4', color: 'purple' },
       ],
@@ -214,12 +221,21 @@ export class WorkflowComponent {
   ];
 
   namedColorsToRGBA: { [key: string]: string } = {
-    red: 'rgba(255, 255, 0, 0.2)',
-    blue: 'rgba(0, 0, 255, 0.2)',
+    red: 'rgba(229, 55, 43, 0.2)',
+    blue: 'rgba(0, 83, 181, 0.2)',
     gray: 'rgba(128, 128, 128, 0.2)',
-    purple: 'rgba(128, 0, 128, 0.2)',
+    purple: 'rgba(98, 54, 204, 0.2)',
     green: 'rgba(0, 128, 0, 0.2)',
-    yellow: 'rgba(235, 166, 34,0.2)'
+    yellow: 'rgba(235, 166, 34,0.2)',
+  };
+
+  namedColorsToRGB: { [key: string]: string } = {
+    red: 'rgba(229, 55, 43)',
+    blue: 'rgba(0, 83, 181)',
+    gray: 'rgba(128, 128, 128)',
+    purple: 'rgba(98, 54, 204)',
+    green: 'rgba(0, 128, 0)',
+    yellow: 'rgba(235, 166, 34)',
   };
 
   hoveredNode: any = null;
