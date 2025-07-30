@@ -31,7 +31,8 @@
                 "input": "public"
               },
               "src/assets",
-              "src/netlify"
+              "src/netlify",
+              "_redirects"
             ],
             "styles": [
               "src/assets/styles/styles.scss"
