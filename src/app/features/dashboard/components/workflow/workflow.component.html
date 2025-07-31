@@ -1,5 +1,5 @@
-<ngx-graph class="chart-container" 
-    [view]="isMobile ? [ 300,250]:[700, 250]" [links]="links" [nodes]="nodes" layout="dagreCluster">
+<ngx-graph class="chart-container" [curve]="curve" [zoomLevel]="zoomLevel" [view]="isMobile ? [ 300,250]:[700, 250]" [links]="links"
+    [nodes]="nodes" layout="dagreCluster">
     <ng-template #defsTemplate>
         <svg:marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="4" markerHeight="4" orient="auto">
             <svg:path d="M0,-5L10,0L0,5" class="arrow-head" />
@@ -77,9 +77,10 @@
         </div>
 
         <div class="content">
-            <img src="./assets/imgs/icons/file.svg" alt="Start icon for {{hoveredNode.label}}" />
+            <img *ngIf="hoveredNode.isFirst" src="./assets/imgs/icons/file.svg" alt="Start icon for {{hoveredNode.label}}" />
 
-            <span *ngFor="let content of hoveredNode.content" [ngClass]="{ 'empasized': content.type === 'label' }"
+            <span *ngFor="let content of hoveredNode.content let i = index" 
+            [ngClass]="{ 'empasized': content.type === 'label', 'block' : (hoveredNode.isFirst && i == 0 || i == hoveredNode.content.length - 1) }"
                 [ngStyle]="{color:namedColorsToRGB[content.color] ,
             'background-color': content.type === 'highlight'
         ? namedColorsToRGBA[content.color] || 'transparent'

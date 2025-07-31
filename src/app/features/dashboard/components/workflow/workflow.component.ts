@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgxGraphModule } from '@swimlane/ngx-graph';
 import { SharedModule } from '../../../../shared/shared.module';
 import { ScreenService } from '../../../../core/services/utils';
+import { curveLinear } from 'd3-shape';
 
 @Component({
   selector: 'app-workflow',
@@ -11,9 +12,6 @@ import { ScreenService } from '../../../../core/services/utils';
   styleUrl: './workflow.component.scss',
 })
 export class WorkflowComponent {
-  private isMobileSubscription;
-  public isMobile: boolean = false;
-
   constructor(isMobileScreen: ScreenService) {
     this.isMobileSubscription = isMobileScreen.isMobile$.subscribe((value) => {
       this.isMobile = value;
@@ -21,7 +19,45 @@ export class WorkflowComponent {
     });
   }
 
+  private isMobileSubscription;
+  public isMobile: boolean = false;
+  curve = curveLinear;
+  zoomLevel = 0.9;
+
   links = [
+    {
+      id: 'l1',
+      source: 'web-01',
+      target: 'db-01',
+      label: 'routes to',
+    },
+    {
+      id: 'l2',
+      source: 'db-01',
+      target: 'cache-01',
+      label: 'routes to',
+    },
+    {
+      id: 'l3',
+      source: 'cache-01',
+      target: 'api-01',
+      label: 'routes to',
+    },
+    {
+      id: 'l4',
+      source: 'api-01',
+      target: 'auth-01',
+      label: 'routes to',
+    },
+    {
+      id: 'l5',
+      source: 'api-01',
+      target: 'auth-02',
+      label: 'routes to',
+    },
+  ];
+
+  /*  links = [
     {
       id: 'l1',
       source: 'web-01',
@@ -94,7 +130,7 @@ export class WorkflowComponent {
       target: 'worker-01',
       label: 'logs from',
     },
-  ];
+  ]; */
 
   nodes = [
     {
@@ -103,17 +139,20 @@ export class WorkflowComponent {
       ip: '192.168.1.10',
       isFirst: true,
       content: [
-        { type: 'label', text: 'Lorem: ', color: 'gray' },
-        { type: 'highlight', text: 'Lorem “Ipsum"', color: 'yellow' },
-        { type: 'label', text: 'Loremipsum', color: 'gray' },
-        { type: 'highlight', text: 'Lorem 1234,5678', color: 'blue' },
+        { type: 'highlight', text: 'Lorem “Ipsum Dolor Sit"', color: 'red' },
+        { type: 'highlight', text: '1.2.3.4"', color: 'red' },
+        { type: 'highlight', text: '1.2.3.4"', color: 'red' },
+        { type: 'highlight', text: '1.2.3.4"', color: 'red' },
+        { type: 'highlight', text: '1.2.3.4"', color: 'red' },
+        { type: 'highlight', text: '1.2.3.4"', color: 'red' },
+        { type: 'highlight', text: '1.2.3.4"', color: 'red' },
+         { type: 'highlight', text: 'Lorem: 1.2.3.4"', color: 'purple' },
       ],
     },
     {
       id: 'db-01',
       label: 'Database Primary',
       ip: '192.168.1.20',
-      isCritical: true,
       content: [
         { type: 'label', text: 'Lorem: ', color: 'gray' },
         { type: 'highlight', text: 'Lorem “Ipsum"', color: 'yellow' },
@@ -125,7 +164,6 @@ export class WorkflowComponent {
       id: 'cache-01',
       label: 'Redis Cache',
       ip: '10.0.0.3',
-      isCritical: true,
       content: [
         { type: 'label', text: 'Lorem: Loremipsum Loremipsum', color: 'gray' },
         { type: 'highlight', text: '1.2.3.4', color: 'purple' },
@@ -160,6 +198,7 @@ export class WorkflowComponent {
       id: 'auth-01',
       label: 'Auth Service',
       ip: '10.0.1.1',
+      isCritical: true,
       content: [
         { type: 'label', text: 'Lorem: ', color: 'gray' },
         { type: 'highlight', text: 'Login: “Enabled”', color: 'red' },
@@ -168,6 +207,18 @@ export class WorkflowComponent {
       ],
     },
     {
+      id: 'auth-02',
+      label: 'Auth Service 02',
+      ip: '10.0.1.02',
+      isCritical: true,
+      content: [
+        { type: 'label', text: 'Lorem: ', color: 'gray' },
+        { type: 'highlight', text: 'Login: “Enabled”', color: 'red' },
+        { type: 'highlight', text: 'Token', color: 'green' },
+        { type: 'highlight', text: '5678', color: 'blue' },
+      ],
+    },
+    /*  {
       id: 'mq-01',
       label: 'Message Queue',
       ip: '10.0.2.2',
@@ -217,7 +268,7 @@ export class WorkflowComponent {
         { type: 'highlight', text: '1.2.3.4', color: 'purple' },
         { type: 'highlight', text: '1.2.3.4', color: 'purple' },
       ],
-    },
+    }, */
   ];
 
   namedColorsToRGBA: { [key: string]: string } = {
