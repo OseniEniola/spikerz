@@ -75,6 +75,12 @@
         p {
           color: var(--gray-soft);
           font-size: 0.7rem;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          letter-spacing: 1%;
         }
       }
     }
@@ -83,6 +89,8 @@
   .accordion-content {
     margin-top: 0.5rem;
     color: var(--gray-soft);
-    font-size: 0.8rem;
+    font-size: 0.76rem;
+    line-height: 20px;
+    letter-spacing: 1%;
   }
 }

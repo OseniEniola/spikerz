@@ -131,8 +131,10 @@
           transform: scale(0.95);
         }
         &.active {
-          img {
+          ::ng-deep app-lazy-media{
+            img {
             filter: invert(1) brightness(0);
+          }
           }
           background-color: var(--light-green-shade);
         }
