@@ -119,7 +119,7 @@
                     alt="Start icon for {{hoveredNode.label}}" />
                 <span *ngFor="let content of hoveredNode.content let i = index"
                     [ngClass]="{ 'empasized': content.type === 'label', 'block' : (hoveredNode.isFirst && (i == 0 || i == hoveredNode.content.length - 1)) }"
-                    [ngStyle]="{color: content.type === 'highlight' ? namedColorsToRGB[content.color] ||
+                    [ngStyle]="{color: namedColorsToRGB[content.color],
             'background-color': content.type === 'highlight'
         ? namedColorsToRGBA[content.color] || 'transparent'
         : 'transparent'}">

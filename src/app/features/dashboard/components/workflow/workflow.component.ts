@@ -143,15 +143,15 @@ export class WorkflowComponent {
         { type: 'highlight', text: 'Lorem: 1.2.3.4', color: 'purple' },
       ],
       drawer: [
-            { type: 'highlight', text: '1.2.3.4', color: 'red' },
-            { type: 'highlight', text: '1.2.3.4', color: 'red' },
-            { type: 'highlight', text: '1.2.3.4', color: 'red' },
-            { type: 'highlight', text: '1.2.3.4', color: 'red' },
-            { type: 'highlight', text: '1.2.3.4', color: 'red' },
-            { type: 'highlight', text: '1.2.3.4', color: 'red' },
-          ],
+        { type: 'highlight', text: '1.2.3.4', color: 'red' },
+        { type: 'highlight', text: '1.2.3.4', color: 'red' },
+        { type: 'highlight', text: '1.2.3.4', color: 'red' },
+        { type: 'highlight', text: '1.2.3.4', color: 'red' },
+        { type: 'highlight', text: '1.2.3.4', color: 'red' },
+        { type: 'highlight', text: '1.2.3.4', color: 'red' },
+      ],
     },
-/*     {
+    /*     {
       id: 'db-01',
       label: 'Database Primary',
       ip: '192.168.1.20',
@@ -184,7 +184,7 @@ export class WorkflowComponent {
       ip: '10.0.0.4',
       isFirst: false,
       width: '18rem',
-       content: [
+      content: [
         { type: 'label', text: 'Lorem: Loremipsum Loremipsum', color: 'gray' },
         { type: 'highlight', text: '1.2.3.4', color: 'purple' },
         { type: 'highlight', text: '1.2.3.4', color: 'purple' },
@@ -215,11 +215,12 @@ export class WorkflowComponent {
       ip: '10.0.1.1',
       isFirst: false,
       isCritical: true,
+      width: '15rem',
       content: [
         { type: 'label', text: 'Lorem: ', color: 'gray' },
-        { type: 'highlight', text: 'Login: “Enabled”', color: 'red' },
-        { type: 'highlight', text: 'Token', color: 'green' },
-        { type: 'highlight', text: '5678', color: 'blue' },
+        { type: 'highlight', text: 'Lorem “Ipsum"', color: 'yellow' },
+        { type: 'label', text: 'Loremipsum', color: 'gray' },
+        { type: 'highlight', text: 'Lorem 1234,5678', color: 'blue' },
       ],
     },
     {
@@ -228,11 +229,12 @@ export class WorkflowComponent {
       ip: '10.0.1.02',
       isFirst: false,
       isCritical: true,
+      width: '15rem',
       content: [
         { type: 'label', text: 'Lorem: ', color: 'gray' },
-        { type: 'highlight', text: 'Login: “Enabled”', color: 'red' },
-        { type: 'highlight', text: 'Token', color: 'green' },
-        { type: 'highlight', text: '5678', color: 'blue' },
+        { type: 'highlight', text: 'Lorem “Ipsum"', color: 'yellow' },
+        { type: 'label', text: 'Loremipsum', color: 'gray' },
+        { type: 'highlight', text: 'Lorem 1234,5678', color: 'blue' },
       ],
     },
     /*  {
@@ -316,7 +318,7 @@ export class WorkflowComponent {
   }
 
   onNodeMouseLeave() {
-    // this.hoveredNode = null;
+     this.hoveredNode = null;
   }
 
   onMouseMove(event: MouseEvent) {

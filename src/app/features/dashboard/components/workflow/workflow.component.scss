@@ -107,11 +107,11 @@
       padding: 0.3rem 0.6rem;
       border-radius: 0.25rem;
       text-align: center;
-      color: var(--gray-soft);
     }
     .empasized {
       font-weight: 700;
       padding: 0.15rem;
+      color: var(--gray-soft) !important;
     }
 
     .block {
