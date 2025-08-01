@@ -77,7 +77,7 @@
         </div>
 
         <div class="content">
-            <img *ngIf="hoveredNode.isFirst" src="./assets/imgs/icons/file.svg" alt="Start icon for {{hoveredNode.label}}" />
+            <img *ngIf="!hoveredNode.isFirst" src="./assets/imgs/icons/file.svg" alt="Start icon for {{hoveredNode.label}}" />
 
             <span *ngFor="let content of hoveredNode.content let i = index" 
             [ngClass]="{ 'empasized': content.type === 'label', 'block' : (hoveredNode.isFirst && i == 0 || i == hoveredNode.content.length - 1) }"

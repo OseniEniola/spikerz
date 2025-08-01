@@ -40,18 +40,18 @@
 
     <!-- Profile/Logout Area -->
     <div class="avatar-wrap" role="region" aria-label="User profile section">
-      <div *ngIf="!isCollapsed" class="menu-label" [@fadeInOut] class="info">
+      <div class="menu-label" [@fadeInOut] class="info">
         <div class="icon">
           <app-lazy-media [isBackground]="false" [lazyLoad]="true" [src]="'assets/imgs/icons/avatar.svg'"
             [alt]="'User avatar'"></app-lazy-media>
         </div>
-        <div>
+        <div *ngIf="!isCollapsed" >
           <p aria-label="User name">Lorem</p>
           <p aria-label="User role">Lorem</p>
         </div>
       </div>
 
-      <div role="button" tabindex="0" aria-label="Logout">
+      <div *ngIf="!isCollapsed"  role="button" tabindex="0" aria-label="Logout">
         <app-lazy-media [isBackground]="false" [lazyLoad]="true" [src]="'assets/imgs/icons/logout.svg'"
           [alt]="'Logout icon'"></app-lazy-media>
       </div>

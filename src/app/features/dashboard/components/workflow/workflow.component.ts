@@ -146,13 +146,14 @@ export class WorkflowComponent {
         { type: 'highlight', text: '1.2.3.4"', color: 'red' },
         { type: 'highlight', text: '1.2.3.4"', color: 'red' },
         { type: 'highlight', text: '1.2.3.4"', color: 'red' },
-         { type: 'highlight', text: 'Lorem: 1.2.3.4"', color: 'purple' },
+        { type: 'highlight', text: 'Lorem: 1.2.3.4"', color: 'purple' },
       ],
     },
     {
       id: 'db-01',
       label: 'Database Primary',
       ip: '192.168.1.20',
+      isFirst: false,
       content: [
         { type: 'label', text: 'Lorem: ', color: 'gray' },
         { type: 'highlight', text: 'Lorem “Ipsum"', color: 'yellow' },
@@ -164,6 +165,7 @@ export class WorkflowComponent {
       id: 'cache-01',
       label: 'Redis Cache',
       ip: '10.0.0.3',
+      isFirst: false,
       content: [
         { type: 'label', text: 'Lorem: Loremipsum Loremipsum', color: 'gray' },
         { type: 'highlight', text: '1.2.3.4', color: 'purple' },
@@ -177,6 +179,7 @@ export class WorkflowComponent {
       id: 'api-01',
       label: 'API Gateway',
       ip: '10.0.0.4',
+      isFirst: false,
       content: [
         { type: 'label', text: 'Lorem: ', color: 'gray' },
         { type: 'highlight', text: 'Lorem “Ipsum"', color: 'yellow' },
@@ -198,6 +201,7 @@ export class WorkflowComponent {
       id: 'auth-01',
       label: 'Auth Service',
       ip: '10.0.1.1',
+      isFirst: false,
       isCritical: true,
       content: [
         { type: 'label', text: 'Lorem: ', color: 'gray' },
@@ -210,6 +214,7 @@ export class WorkflowComponent {
       id: 'auth-02',
       label: 'Auth Service 02',
       ip: '10.0.1.02',
+      isFirst: false,
       isCritical: true,
       content: [
         { type: 'label', text: 'Lorem: ', color: 'gray' },
