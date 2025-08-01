@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NgxGraphModule } from '@swimlane/ngx-graph';
 import { SharedModule } from '../../../../shared/shared.module';
 import { ScreenService } from '../../../../core/services/utils';
-import { curveLinear } from 'd3-shape';
+import { curveBundle, curveLinear } from 'd3-shape';
 
 @Component({
   selector: 'app-workflow',
@@ -21,7 +21,8 @@ export class WorkflowComponent {
 
   private isMobileSubscription;
   public isMobile: boolean = false;
-  curve = curveLinear;
+  curve = curveBundle.beta(1);
+  //curve = curveLinear;
   zoomLevel = 0.9;
 
   links = [
@@ -43,15 +44,21 @@ export class WorkflowComponent {
       target: 'api-01',
       label: 'routes to',
     },
+     {
+      id: 'l7',
+      source: 'api-01',
+      target: 'fork',
+      label: 'routes to',
+    },
     {
       id: 'l4',
-      source: 'api-01',
+      source: 'fork',
       target: 'auth-01',
       label: 'routes to',
     },
     {
       id: 'l5',
-      source: 'api-01',
+      source: 'fork',
       target: 'auth-02',
       label: 'routes to',
     },
@@ -209,6 +216,7 @@ export class WorkflowComponent {
         { type: 'highlight', text: '1.2.3.4', color: 'purple' },
       ], */
     },
+ /*     { id: 'fork', label: '',  isFork: true, },   */
     {
       id: 'auth-01',
       label: 'Auth Service',

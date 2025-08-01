@@ -123,10 +123,20 @@
     }
   }
 }
+::ng-deep .invisible-node {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
 
 ::ng-deep .custom-edge {
   stroke: #858d9d;
   stroke-width: 0.75px;
   opacity: 1;
   border-radius: 22.5px; // This will not directly affect SVG paths
+}
+
+.node[data-isFork='true'] {
+  opacity: 0;
+  pointer-events: none;
 }

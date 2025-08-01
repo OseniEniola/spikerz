@@ -14,31 +14,36 @@
     </ng-template>
 
     <ng-template #nodeTemplate let-node>
-        <foreignObject [attr.width]="isMobile ? '35': '70'" [attr.height]="isMobile ? '35': '70'"
-            requiredExtensions="http://www.w3.org/1999/xhtml">
-            <div (mouseenter)="onNodeMouseEnter($event, node)" (mouseleave)="onNodeMouseLeave()" class="server-details">
-                <div class="server-icon">
-                    <ng-container *ngIf="node?.isFirst; else serverIcon">
-                        <img src="./assets/imgs/icons/venetian-mask.svg" alt="Start icon for {{node.label}}" />
-                        <div class="badge start">
-                            <img src="./assets/imgs/icons/group.svg" alt="Start icon for {{node.label}}" />
+        <ng-container *ngIf="!node.isFork">
+            <foreignObject [attr.width]="isMobile ? (node.isFork ? '0' : '35') : (node.isFork ? '0' : '70')"
+                [attr.height]="isMobile ? (node.isFork ? '0' : '35') : (node.isFork ? '0' : '70')"
+                requiredExtensions="http://www.w3.org/1999/xhtml">
+                <div (mouseenter)="onNodeMouseEnter($event, node)" (mouseleave)="onNodeMouseLeave()"
+                    [ngClass]="{'invisible-node': node.isFork}" class="server-details">
+                    <div class="server-icon">
+                        <ng-container *ngIf="node?.isFirst; else serverIcon">
+                            <img src="./assets/imgs/icons/venetian-mask.svg" alt="Start icon for {{node.label}}" />
+                            <div class="badge start">
+                                <img src="./assets/imgs/icons/group.svg" alt="Start icon for {{node.label}}" />
 
-                        </div>
-                    </ng-container>
+                            </div>
+                        </ng-container>
 
-                    <ng-template #serverIcon>
-                        <img src="/assets/imgs/icons/server.svg" alt="Server icon for {{node.label}}" />
-                        <div *ngIf="node?.isCritical" class="badge critical">
-                            <img src="./assets/imgs/icons/shield-x.svg" alt="Start icon for {{node.label}}" />
+                        <ng-template #serverIcon>
+                            <img src="/assets/imgs/icons/server.svg" alt="Server icon for {{node.label}}" />
+                            <div *ngIf="node?.isCritical" class="badge critical">
+                                <img src="./assets/imgs/icons/shield-x.svg" alt="Start icon for {{node.label}}" />
 
-                        </div>
-                    </ng-template>
+                            </div>
+                        </ng-template>
+                    </div>
+                    <span class="label-name">{{node.label}}</span>
                 </div>
-                <span class="label-name">{{node.label}}</span>
-            </div>
 
 
-        </foreignObject>
+            </foreignObject>
+        </ng-container>
+
     </ng-template>
 
     <ng-template #linkTemplate let-link>
@@ -86,8 +91,7 @@
 
             <ng-template #firstNode>
                 <div>
-                    <span 
-                    [ngStyle]="{color:namedColorsToRGB[hoveredNode.content[0].color] ,
+                    <span [ngStyle]="{color:namedColorsToRGB[hoveredNode.content[0].color] ,
                     'background-color': hoveredNode.content[0].type === 'highlight'
                     ? namedColorsToRGBA[hoveredNode.content[0].color] || 'transparent'
                     : 'transparent'}">
@@ -95,8 +99,7 @@
                     </span>
 
                     <div class="drawer">
-                        <span *ngFor="let content of hoveredNode.drawer let i = index"
-                            [ngStyle]="{color:namedColorsToRGB[content.color] ,
+                        <span *ngFor="let content of hoveredNode.drawer let i = index" [ngStyle]="{color:namedColorsToRGB[content.color] ,
                             'background-color': content.type === 'highlight'
                             ? namedColorsToRGBA[content.color] || 'transparent'
                             : 'transparent'}">
@@ -104,8 +107,7 @@
                         </span>
                     </div>
 
-                    <span 
-                    [ngStyle]="{color:namedColorsToRGB[hoveredNode.content[hoveredNode.content.length -1].color] ,
+                    <span [ngStyle]="{color:namedColorsToRGB[hoveredNode.content[hoveredNode.content.length -1].color] ,
                     'background-color': hoveredNode.content[hoveredNode.content.length -1].type === 'highlight'
                     ? namedColorsToRGBA[hoveredNode.content[hoveredNode.content.length -1].color] || 'transparent'
                     : 'transparent'}">
