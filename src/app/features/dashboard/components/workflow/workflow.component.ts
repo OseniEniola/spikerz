@@ -28,15 +28,15 @@ export class WorkflowComponent {
     {
       id: 'l1',
       source: 'web-01',
-      target: 'db-01',
+      target: 'cache-01',
       label: 'routes to',
     },
-    {
+    /* {
       id: 'l2',
       source: 'db-01',
       target: 'cache-01',
       label: 'routes to',
-    },
+    }, */
     {
       id: 'l3',
       source: 'cache-01',
@@ -140,16 +140,18 @@ export class WorkflowComponent {
       isFirst: true,
       content: [
         { type: 'highlight', text: 'Lorem “Ipsum Dolor Sit"', color: 'red' },
-        { type: 'highlight', text: '1.2.3.4"', color: 'red' },
-        { type: 'highlight', text: '1.2.3.4"', color: 'red' },
-        { type: 'highlight', text: '1.2.3.4"', color: 'red' },
-        { type: 'highlight', text: '1.2.3.4"', color: 'red' },
-        { type: 'highlight', text: '1.2.3.4"', color: 'red' },
-        { type: 'highlight', text: '1.2.3.4"', color: 'red' },
-        { type: 'highlight', text: 'Lorem: 1.2.3.4"', color: 'purple' },
+        { type: 'highlight', text: 'Lorem: 1.2.3.4', color: 'purple' },
       ],
+      drawer: [
+            { type: 'highlight', text: '1.2.3.4', color: 'red' },
+            { type: 'highlight', text: '1.2.3.4', color: 'red' },
+            { type: 'highlight', text: '1.2.3.4', color: 'red' },
+            { type: 'highlight', text: '1.2.3.4', color: 'red' },
+            { type: 'highlight', text: '1.2.3.4', color: 'red' },
+            { type: 'highlight', text: '1.2.3.4', color: 'red' },
+          ],
     },
-    {
+/*     {
       id: 'db-01',
       label: 'Database Primary',
       ip: '192.168.1.20',
@@ -160,12 +162,13 @@ export class WorkflowComponent {
         { type: 'label', text: 'Loremipsum', color: 'gray' },
         { type: 'highlight', text: 'Lorem 1234,5678', color: 'blue' },
       ],
-    },
+    }, */
     {
       id: 'cache-01',
       label: 'Redis Cache',
       ip: '10.0.0.3',
       isFirst: false,
+      width: '18rem',
       content: [
         { type: 'label', text: 'Lorem: Loremipsum Loremipsum', color: 'gray' },
         { type: 'highlight', text: '1.2.3.4', color: 'purple' },
@@ -180,7 +183,16 @@ export class WorkflowComponent {
       label: 'API Gateway',
       ip: '10.0.0.4',
       isFirst: false,
-      content: [
+      width: '18rem',
+       content: [
+        { type: 'label', text: 'Lorem: Loremipsum Loremipsum', color: 'gray' },
+        { type: 'highlight', text: '1.2.3.4', color: 'purple' },
+        { type: 'highlight', text: '1.2.3.4', color: 'purple' },
+        { type: 'label', text: 'Loremipsum', color: 'gray' },
+        { type: 'highlight', text: '1.2.3.4', color: 'purple' },
+        { type: 'highlight', text: '1.2.3.4', color: 'purple' },
+      ],
+      /* content: [
         { type: 'label', text: 'Lorem: ', color: 'gray' },
         { type: 'highlight', text: 'Lorem “Ipsum"', color: 'yellow' },
         { type: 'highlight', text: 'Lorem', color: 'green' },
@@ -195,7 +207,7 @@ export class WorkflowComponent {
         { type: 'label', text: 'Loremipsum Loremipsum', color: 'gray' },
         { type: 'highlight', text: '1.2.3.4', color: 'purple' },
         { type: 'highlight', text: '1.2.3.4', color: 'purple' },
-      ],
+      ], */
     },
     {
       id: 'auth-01',
@@ -304,7 +316,7 @@ export class WorkflowComponent {
   }
 
   onNodeMouseLeave() {
-    this.hoveredNode = null;
+    // this.hoveredNode = null;
   }
 
   onMouseMove(event: MouseEvent) {

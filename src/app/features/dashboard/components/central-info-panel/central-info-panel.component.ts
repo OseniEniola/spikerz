@@ -1,40 +1,44 @@
 import { Component } from '@angular/core';
-import { RemediationTechniqueComponent } from "../remediation-technique/remediation-technique.component";
+import { RemediationTechniqueComponent } from '../remediation-technique/remediation-technique.component';
 
 @Component({
   selector: 'app-central-info-panel',
   standalone: true,
   imports: [RemediationTechniqueComponent],
   templateUrl: './central-info-panel.component.html',
-  styleUrl: './central-info-panel.component.scss'
+  styleUrl: './central-info-panel.component.scss',
 })
 export class CentralInfoPanelComponent {
+  descriptionText = `  Lorem ipsum dolor sit amet consectetur. Aenean sodales pellentesque gravida
+    nibh et magna faucibus. Dui commodo ut metus amet egestas habitant viverra.
+    Quisque fusce senectus facilisis non diam leo nulla sem pellentesque.
+    Sit in vel sed cursus metus sit fringilla vestibulum.`;
+
+  extrasText = ` Lorem ipsum dolor sit amet consectetur. Tempus a id adipiscing fames egestas
+    tellus dis pretium tempus. Justo nisl nisl lorem lectus id ornare. Rhoncus in egestas in amet porttitor
+    pellentesque sit. Amet gravida integer velit felis. Eu consectetur interdum auctor sed aliquam. Eu pulvinar
+    accumsan sed id. Duis a aliquam eu quisque commodo lectus. Lectus ipsum velit purus viverra vulputate viverra in
+    nunc nulla. Euismod rhoncus mauris urna orci gravida sagittis netus. Amet mus in vel etiam. Interdum habitant
+    congue massa in etiam sit. Commodo nibh viverra lobortis augue lorem quam lorem suspendisse.`;
 
   remediationItems = [
-  {
-    name: 'Asset One',
-    serverName: 'Server-Alpha',
-    desc: 'Primary production server handling web traffic.',
-    content: `Server-Alpha is the main entry point for all user-facing applications. It manages HTTP/HTTPS traffic, handles load balancing through Nginx, and connects to backend microservices. 
-    Logs are collected via Fluentd and stored in Elasticsearch for monitoring. It is crucial this server remains available 24/7.`
-  },
-  {
-    name: 'Asset Two',
-    serverName: 'Server-Beta',
-    desc: 'Handles background processing tasks and data sync.',
-    content: `Server-Beta is optimized for background jobs like report generation, third-party API syncing, and scheduled data exports. 
-    It runs multiple worker queues using BullMQ and supports automatic retries on failure. Monitoring is done via Prometheus with custom Grafana dashboards. 
-    This server is not user-facing, but it's vital for business operations and backend workflows.`
-  },
-  {
-    name: 'Asset Three',
-    serverName: 'Server-Gamma',
-    desc: 'Used for staging and QA purposes.',
-    content: `Server-Gamma serves as the pre-production environment. QA teams use it to validate new features and bug fixes before they are deployed to production. 
-    It mirrors the production setup closely, with separate databases, feature flags, and CI/CD pipelines. 
-    Developers and testers access this server regularly during sprint cycles.`
-  }
-];
-
-
+    {
+      name: 'Lorem T',
+      serverName: 'Server',
+      desc: 'Lorem ipsum dolor sit amet consectetur.',
+      content: `Lorem ipsum dolor sit amet consectetur. In laoreet elementum luctus odio. Id enim urna.`,
+    },
+    {
+      name: 'Lorem S',
+      serverName: 'Server',
+      desc: 'Lorem ipsum dolor sit amet consectetur.',
+      content: `Lorem ipsum dolor sit amet consectetur. Quis viverra etiam pellentesque lectus semper in massa purus. Auctor aenean aenean senectus massa dignissim vehicula mi erat purus. Praesent scelerisque aliquet metus sagittis dictum sed sed. Sed venenatis sed urna quam.`,
+    },
+    {
+      name: 'Lorem P',
+      serverName: 'Server',
+      desc: 'Lorem ipsum dolor sit amet consectetur.',
+      content: `Lorem ipsum dolor sit amet consectetur. Nunc vitae tortor convallis vitae arcu. Magna.`,
+    },
+  ];
 }

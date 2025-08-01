@@ -15,29 +15,30 @@
           <app-lazy-media [isBackground]="false" [lazyLoad]="true" [src]="'assets/imgs/icons/menu-' + (i + 1) + '.svg'"
             [alt]="menu"></app-lazy-media>
         </div>
-        <span *ngIf="!isCollapsed" class="menu-label" [@fadeInOut]>{{ menu }}</span>
+        <span  class="menu-label" [@fadeInOut]>{{ menu }}</span>
       </li>
     </ul>
   </nav>
 
   <!-- Bottom Section -->
-  <div class="btm-sec">
-    <div class="menu" role="button" tabindex="0" aria-label="More options">
+  <div class="btm-sec menu-wrap" [ngClass]="{ collapsed: isCollapsed,mobileMenuisOpened:openMobileMenu }" >
+    <div class="menu-item" [ngClass]="{ collapsed: isCollapsed,mobileMenuisOpened:openMobileMenu }" role="button" tabindex="0" aria-label="More options">
       <div>
         <app-lazy-media [isBackground]="false" [lazyLoad]="true" [src]="'assets/imgs/icons/menu-8.svg'"
           [alt]="'More'"></app-lazy-media>
       </div>
-      <span *ngIf="!isCollapsed" class="menu-label" [@fadeInOut]>Lorem</span>
+      <span class="menu-label" [@fadeInOut]>Lorem</span>
     </div>
 
-    <div class="menu" role="button" tabindex="0" aria-label="Help center">
+    <div class="menu-item" role="button" tabindex="0" aria-label="Help center">
       <div>
         <app-lazy-media [isBackground]="false" [lazyLoad]="true" [src]="'assets/imgs/icons/menu-9.svg'"
           [alt]="'Help'"></app-lazy-media>
       </div>
-      <span *ngIf="!isCollapsed" class="menu-label" [@fadeInOut]>Lorem</span>
+      <span  class="menu-label" [@fadeInOut]>Lorem</span>
     </div>
 
+    <div class="separator"></div>
     <!-- Profile/Logout Area -->
     <div class="avatar-wrap" role="region" aria-label="User profile section">
       <div class="menu-label" [@fadeInOut] class="info">

@@ -1,5 +1,5 @@
-<ngx-graph class="chart-container" [curve]="curve" [zoomLevel]="zoomLevel" [view]="isMobile ? [ 300,250]:[700, 250]" [links]="links"
-    [nodes]="nodes" layout="dagreCluster">
+<ngx-graph class="chart-container" [curve]="curve" [zoomLevel]="zoomLevel" [view]="isMobile ? [ 300,250]:[700, 250]"
+    [links]="links" [nodes]="nodes" layout="dagreCluster">
     <ng-template #defsTemplate>
         <svg:marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="4" markerHeight="4" orient="auto">
             <svg:path d="M0,-5L10,0L0,5" class="arrow-head" />
@@ -14,7 +14,7 @@
     </ng-template>
 
     <ng-template #nodeTemplate let-node>
-        <foreignObject [attr.width]="isMobile ? '30': '70'" [attr.height]="isMobile ? '30': '70'"
+        <foreignObject [attr.width]="isMobile ? '35': '70'" [attr.height]="isMobile ? '35': '70'"
             requiredExtensions="http://www.w3.org/1999/xhtml">
             <div (mouseenter)="onNodeMouseEnter($event, node)" (mouseleave)="onNodeMouseLeave()" class="server-details">
                 <div class="server-icon">
@@ -42,14 +42,18 @@
     </ng-template>
 
     <ng-template #linkTemplate let-link>
-        <svg:g class="edge">
+        <!--  <svg:g class="edge">
             <svg:path class="line" stroke-width="2" marker-end="url(#arrow)"></svg:path>
             <svg:text class="edge-label" text-anchor="middle">
                 <textPath class="text-path" [attr.href]="'#' + link.id"
                     [style.dominant-baseline]="link.dominantBaseline" startOffset="50%">
-                    <!--    {{link.label}} -->
+                    <!--    {{link.label}}
                 </textPath>
             </svg:text>
+        </svg:g> -->
+        <svg:g class="edge">
+            <svg:path class="custom-edge" stroke="#858D9D" marker-end="url(#arrow)" [attr.stroke-width]="1" fill="none"
+                [attr.d]="link.line" opacity="1" stroke-linecap="round" />
         </svg:g>
     </ng-template>
 </ngx-graph>
@@ -57,9 +61,10 @@
 <ng-container #tooltip>
     <div *ngIf="hoveredNode" class="tooltip-wrap" [ngStyle]="{
     left: mouseX + 10 + 'px',
-    top: mouseY + 10 + 'px'
+    top: mouseY + 10 + 'px',
+    width: hoveredNode.width
   }">
-        <div class="server-details flex-d">
+        <div *ngIf="!hoveredNode.isFirst" class="server-details flex-d">
             <div class="server-icon">
                 <ng-container>
                     <img src="/assets/imgs/icons/server.svg" alt="Server icon for {{hoveredNode.label}}" />
@@ -76,17 +81,51 @@
             </div>
         </div>
 
-        <div class="content">
-            <img *ngIf="!hoveredNode.isFirst" src="./assets/imgs/icons/file.svg" alt="Start icon for {{hoveredNode.label}}" />
+        <div [ngStyle]="{'width':hoveredNode.containerWidth}" class="content">
+            <ng-content *ngIf="hoveredNode.isFirst then firstNode; else regularNode"></ng-content>
 
-            <span *ngFor="let content of hoveredNode.content let i = index" 
-            [ngClass]="{ 'empasized': content.type === 'label', 'block' : (!hoveredNode.isFirst && i == 0 || i == hoveredNode.content.length - 1) }"
-                [ngStyle]="{color:namedColorsToRGB[content.color] ,
+            <ng-template #firstNode>
+                <div>
+                    <span 
+                    [ngStyle]="{color:namedColorsToRGB[hoveredNode.content[0].color] ,
+                    'background-color': hoveredNode.content[0].type === 'highlight'
+                    ? namedColorsToRGBA[hoveredNode.content[0].color] || 'transparent'
+                    : 'transparent'}">
+                        {{ hoveredNode.content[0].text }}
+                    </span>
+
+                    <div class="drawer">
+                        <span *ngFor="let content of hoveredNode.drawer let i = index"
+                            [ngStyle]="{color:namedColorsToRGB[content.color] ,
+                            'background-color': content.type === 'highlight'
+                            ? namedColorsToRGBA[content.color] || 'transparent'
+                            : 'transparent'}">
+                            {{ content.text }}
+                        </span>
+                    </div>
+
+                    <span 
+                    [ngStyle]="{color:namedColorsToRGB[hoveredNode.content[hoveredNode.content.length -1].color] ,
+                    'background-color': hoveredNode.content[hoveredNode.content.length -1].type === 'highlight'
+                    ? namedColorsToRGBA[hoveredNode.content[hoveredNode.content.length -1].color] || 'transparent'
+                    : 'transparent'}">
+                        {{ hoveredNode.content[hoveredNode.content.length -1].text }}
+                    </span>
+                </div>
+            </ng-template>
+
+            <ng-template #regularNode>
+                <img *ngIf="!hoveredNode.isFirst" src="./assets/imgs/icons/file.svg"
+                    alt="Start icon for {{hoveredNode.label}}" />
+                <span *ngFor="let content of hoveredNode.content let i = index"
+                    [ngClass]="{ 'empasized': content.type === 'label', 'block' : (hoveredNode.isFirst && (i == 0 || i == hoveredNode.content.length - 1)) }"
+                    [ngStyle]="{color: content.type === 'highlight' ? namedColorsToRGB[content.color] ||
             'background-color': content.type === 'highlight'
         ? namedColorsToRGBA[content.color] || 'transparent'
         : 'transparent'}">
-                {{ content.text }}
-            </span>
+                    {{ content.text }}
+                </span>
+            </ng-template>
         </div>
     </div>
 </ng-container>

@@ -24,17 +24,17 @@
     transform: translateX(0);
     transition: all 0.3s ease-in;
 
-    &.collapsed{
-       .toggle{
+    &.collapsed {
+      .toggle {
         display: none;
-         @include screen-media-max(lg) {
+        @include screen-media-max(lg) {
           display: flex;
-         }
-       }
+        }
+      }
 
-       &:hover{
+      &:hover {
         display: flex;
-       }
+      }
     }
 
     &.collapsed,
@@ -75,7 +75,7 @@
     width: 15rem;
     transition: all 0.3s ease-in;
     @include screen-media-max(lg) {
-      position: fixed;
+      position: relative;
       top: 0;
       left: 0;
       width: 20rem;
@@ -93,22 +93,37 @@
     &.collapsed,
     .mobileMenuisOpened {
       transition: all 0.3s ease-in;
+
       width: 3rem;
       .menu-item {
         justify-content: center;
-
+        position: relative;
         .menu-label {
-          display: none;
+           display: none;
+        }
+
+        &:hover {
+          .menu-label {
+            position: absolute;
+            right: -135%;
+            top: 5%;
+            display: block;
+            background-color: var(--light-green-shade);
+            padding: 0.36em 0.7rem;
+            font-size: 0.67rem;
+            border-radius: 0.6rem;
+          }
         }
       }
     }
     ul {
       list-style-type: none;
       padding-left: 0.35rem;
+    }
 
       .menu-item {
         width: 92%;
-        padding: 0.6rem 0.45rem;
+        padding: 0.5rem 0.55rem;
         border-radius: 0.5rem;
         display: flex;
         gap: 0.6rem;
@@ -131,22 +146,30 @@
           transform: scale(0.95);
         }
         &.active {
-          ::ng-deep app-lazy-media{
+          ::ng-deep app-lazy-media {
             img {
-            filter: invert(1) brightness(0);
-          }
+              filter: invert(1) brightness(0);
+            }
           }
           background-color: var(--light-green-shade);
         }
+
+        ::ng-deep app-lazy-media {
+          img {
+            width: 1rem;
+          }
+        }
       }
-    }
   }
 
   .btm-sec {
     margin-top: auto;
     padding: 0.2rem 0.5rem;
     z-index: 3;
-    .menu {
+    &.menu-wrap{
+      height: auto;
+    }
+ /*    .menu {
       width: 95%;
       padding: 0.6rem 0.45rem;
       border-radius: 0.5rem;
@@ -170,6 +193,15 @@
         transition: all 0.3s ease-in;
         transform: scale(0.95);
       }
+      ::ng-deep app-lazy-media {
+        img {
+          width: 1rem;
+        }
+      }
+    }
+ */
+    .separator {
+      margin-top: 0.7rem;
     }
 
     .avatar-wrap {
@@ -184,6 +216,7 @@
       line-height: 22px;
       letter-spacing: 1%;
       vertical-align: middle;
+      margin-top: 1rem;
       .info {
         display: flex;
         gap: 0.6rem;
@@ -192,7 +225,7 @@
         .icon {
           ::ng-deep app-lazy-media {
             img {
-              width: 2.3rem;
+              width: 2.2rem;
               height: auto;
             }
           }

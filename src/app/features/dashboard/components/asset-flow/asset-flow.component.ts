@@ -70,7 +70,7 @@ export class AssetFlowComponent {
     },
   ];
 
-  public doughnutChartLabels: string[] = ['3 Critical', '3 High', '2 Medium', ' 2 Low'];
+  public doughnutChartLabels: string[] = ['3 Critical', '3 High', '2 Medium', '2 Low'];
   public doughnutChartDatasets: ChartConfiguration<'doughnut'>['data']['datasets'] =
     [
       {
@@ -93,6 +93,7 @@ export class AssetFlowComponent {
         },
       },
     },
+    cutout: '80%',
   };
 
   assetsInView = this.assestList.slice(1, 2);
